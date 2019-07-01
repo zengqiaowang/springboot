@@ -59,7 +59,7 @@ public class JsonData extends WebMvcConfigurerAdapter{
 	}
 	
 	public static void main(String[] args) {
-		SpringApplication application = new SpringApplication(JsonData.class);
-		application.run(args);
+		/*SpringApplication application = new SpringApplication(JsonData.class);
+		application.run(args);*/
 	}
 }

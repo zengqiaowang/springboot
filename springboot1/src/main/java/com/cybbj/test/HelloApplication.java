@@ -4,13 +4,17 @@
  */
 package com.cybbj.test;
 
-import org.springframework.boot.Banner;
-import org.springframework.boot.Banner.Mode;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,13 +36,24 @@ public class HelloApplication {
 	@RequestMapping("hello")
 	@ResponseBody
 	public String hello() {
-		return "hello world";
+		return "hello world中文11";
 	}
-	
-/*	public static void main(String[] args) {
-		//SpringApplication.run(HelloApplication.class, args);
-		SpringApplication application = new SpringApplication(HelloApplication.class);
-		application.setBannerMode(Banner.Mode.OFF);
-		application.run(args);
+	/*@Bean
+	public StringHttpMessageConverter stringHttpMessageConverter(){
+	    StringHttpMessageConverter converter  = new StringHttpMessageConverter(Charset.forName("utf-8"));
+	    return converter;
 	}*/
+
+    /*@Bean
+    public HttpMessageConverter<String> responseBodyStringConverter() {
+        StringHttpMessageConverter converter = new StringHttpMessageConverter(StandardCharsets.UTF_8);
+        return converter;
+    }*/
+    
+	public static void main(String[] args) {
+		SpringApplication.run(HelloApplication.class, args);
+		/*SpringApplication application = new SpringApplication(HelloApplication.class);
+		application.setBannerMode(Banner.Mode.OFF);
+		application.run(args);*/
+	}
 }
